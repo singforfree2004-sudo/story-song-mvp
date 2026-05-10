@@ -22,7 +22,7 @@ npm run dev
 打開 `src/data/site.js`，修改：
 
 ```js
-export const GOOGLE_FORM_URL = 'https://forms.gle/PLACEHOLDER';
+export const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/1cycxeoyQwtbdh29RxMeXPdbMKXiu_1KYft4dcNoa2-w/viewform';
 ```
 
 改成正式表單連結即可。首頁 Hero、方案按鈕與 CTA 都會一起更新。
