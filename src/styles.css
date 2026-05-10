@@ -335,6 +335,33 @@ audio {
   font-size: 0.92rem;
 }
 
+.lyrics-panel {
+  margin-top: 0.9rem;
+  border: 1px solid rgba(255, 248, 236, 0.14);
+  border-radius: 8px;
+  background: rgba(10, 17, 26, 0.34);
+}
+
+.lyrics-panel summary {
+  min-height: 3rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  color: var(--gold-soft);
+  font-weight: 900;
+}
+
+.lyrics-panel pre {
+  max-height: 22rem;
+  overflow: auto;
+  margin: 0;
+  padding: 0 1rem 1rem;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+
 .pricing-grid {
   grid-template-columns: 1fr;
 }

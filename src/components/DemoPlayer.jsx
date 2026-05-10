@@ -45,7 +45,10 @@ export default function DemoPlayer() {
                 <audio controls preload="none" src={demo.audioSrc} aria-label={`${demo.title} 試聽播放器`}>
                   你的瀏覽器不支援 HTML5 audio 播放器。
                 </audio>
-                <p className="placeholder-note">尚未放入音檔時，播放器可能無法播放；替換同名 MP3 後即可試聽。</p>
+                <details className="lyrics-panel">
+                  <summary>查看歌詞</summary>
+                  <pre>{demo.lyrics}</pre>
+                </details>
               </div>
             </article>
           ))}
