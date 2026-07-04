@@ -1,10 +1,16 @@
 const form = document.querySelector("#intakeForm");
 const message = document.querySelector("#formMessage");
+const submitButton = document.querySelector("#submitButton");
 const config = window.BAZI_MVP_CONFIG || {};
 
 function setMessage(text, isError = false) {
   message.textContent = text;
   message.classList.toggle("error", isError);
+}
+
+function setSubmitting(isSubmitting) {
+  submitButton.disabled = isSubmitting;
+  submitButton.querySelector("span").textContent = isSubmitting ? "送出中..." : "送出申請";
 }
 
 function getApiUrl() {
@@ -15,12 +21,9 @@ function isExternalApi(url) {
   return /^https?:\/\//.test(url);
 }
 
-form.addEventListener("submit", async event => {
-  event.preventDefault();
-  setMessage("送出中...");
-
+function getFormPayload() {
   const data = new FormData(form);
-  const payload = {
+  return {
     displayName: data.get("displayName"),
     email: data.get("email"),
     gender: data.get("gender"),
@@ -34,9 +37,17 @@ form.addEventListener("submit", async event => {
     consent: data.get("consent") === "on",
     marketingConsent: data.get("marketingConsent") === "on"
   };
+}
+
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+  setSubmitting(true);
+  setMessage("正在送出資料，請稍候。");
 
   try {
+    const payload = getFormPayload();
     const apiUrl = getApiUrl();
+
     if (isExternalApi(apiUrl)) {
       await fetch(apiUrl, {
         method: "POST",
@@ -45,7 +56,7 @@ form.addEventListener("submit", async event => {
         body: JSON.stringify(payload)
       });
       form.reset();
-      setMessage("已送出申請。請回到對話裡告訴我們已填好，我們會讀取測試資料並製作交付信。");
+      setMessage("已送出申請。我們收到資料後，會排盤並製作免費語音摘要，再寄送到你的 Email。");
       return;
     }
 
@@ -56,12 +67,14 @@ form.addEventListener("submit", async event => {
     });
     const result = await response.json();
     if (!response.ok) {
-      setMessage((result.errors || [result.error || "送出失敗"]).join(" "), true);
+      setMessage((result.errors || [result.error || "送出失敗，請稍後再試。"]).join(" "), true);
       return;
     }
     form.reset();
-    setMessage(`已收到申請，案件代號：${result.lead.caseId}。MVP 後台已建立案件。`);
+    setMessage(`已收到申請，案件代號：${result.lead.caseId}。我們會開始製作免費摘要。`);
   } catch (error) {
     setMessage(`送出失敗：${error.message}`, true);
+  } finally {
+    setSubmitting(false);
   }
 });
