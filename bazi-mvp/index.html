@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>免費八字語音摘要 MVP</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell intake-shell">
+      <section class="intro-band">
+        <div>
+          <p class="eyebrow">免費測試版</p>
+          <h1>八字語音摘要</h1>
+          <p class="lead">
+            輸入出生資料，我們會先製作一份簡短文字摘要與語音連結。完整版可再延伸工作、財運、感情、健康與追加追問。
+          </p>
+        </div>
+        <div class="process-strip" aria-label="流程">
+          <span>填資料</span>
+          <span>排盤</span>
+          <span>製作語音</span>
+          <span>寄回 Email</span>
+        </div>
+      </section>
+
+      <section class="form-layout">
+        <form id="intakeForm" class="panel form-panel">
+          <div class="section-heading">
+            <h2>申請免費摘要</h2>
+            <p>目前是內部 MVP 測試，請先填模擬資料。</p>
+          </div>
+
+          <div class="grid two">
+            <label>
+              <span>姓名或暱稱</span>
+              <input name="displayName" autocomplete="name" placeholder="例如 Jay / Chen / 小名" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" placeholder="用來接收摘要連結" required />
+            </label>
+          </div>
+
+          <div class="grid three">
+            <label>
+              <span>性別</span>
+              <select name="gender" required>
+                <option value="">請選擇</option>
+                <option>男</option>
+                <option>女</option>
+                <option>未提供</option>
+              </select>
+            </label>
+            <label>
+              <span>陽曆生日</span>
+              <input name="birthDate" type="date" required />
+            </label>
+            <label>
+              <span>出生時間</span>
+              <input name="birthTime" type="time" required />
+            </label>
+          </div>
+
+          <label>
+            <span>出生地 / 時區</span>
+            <input name="birthPlace" placeholder="例如 台灣台南；若不確定可先空白" />
+          </label>
+
+          <div class="question-block">
+            <div class="section-heading compact">
+              <h2>想問的問題</h2>
+              <p>最多三題；空白也可以，我們會用預設問題。</p>
+            </div>
+            <label>
+              <span>問題 1</span>
+              <input name="question1" placeholder="例如：未來一年工作與財運如何？" />
+            </label>
+            <label>
+              <span>問題 2</span>
+              <input name="question2" placeholder="例如：感情或家庭關係要注意什麼？" />
+            </label>
+            <label>
+              <span>問題 3</span>
+              <input name="question3" placeholder="例如：適合轉職、創業或合作嗎？" />
+            </label>
+          </div>
+
+          <div class="consent-box">
+            <label class="checkline">
+              <input name="consent" type="checkbox" required />
+              <span>我同意接收免費八字摘要與本次服務通知。</span>
+            </label>
+            <label class="checkline">
+              <input name="marketingConsent" type="checkbox" />
+              <span>我願意收到完整版或追加追問的升級資訊。</span>
+            </label>
+          </div>
+
+          <button class="primary-action" type="submit">送出申請</button>
+          <p id="formMessage" class="message" role="status"></p>
+        </form>
+
+        <aside class="panel side-panel">
+          <h2>免費版包含</h2>
+          <ul class="clean-list">
+            <li>簡短文字摘要</li>
+            <li>約 3-5 分鐘語音連結</li>
+            <li>一個目前最重要提醒</li>
+            <li>完整版升級方向</li>
+          </ul>
+          <div class="divider"></div>
+          <h2>完整版會延伸</h2>
+          <ul class="clean-list muted">
+            <li>工作與職涯</li>
+            <li>財運與資產策略</li>
+            <li>感情與家庭</li>
+            <li>未來五年與追加追問</li>
+          </ul>
+          <p class="fineprint">
+            命理內容作為自我理解與生活參考，不作為醫療、法律、投資或絕對命運判斷。
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./main.js" type="module"></script>
+  </body>
+</html>
