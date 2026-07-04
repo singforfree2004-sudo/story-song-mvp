@@ -554,6 +554,96 @@ input:focus {
   font-size: 14px;
 }
 
+.site-footer {
+  width: min(1180px, calc(100% - 36px));
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 auto;
+  padding: 0 0 48px;
+  color: var(--muted);
+}
+
+.site-footer strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink-strong);
+  font-family: "Noto Serif TC", serif;
+  font-size: 18px;
+}
+
+.site-footer p {
+  max-width: 520px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.site-footer a {
+  color: var(--gold-light);
+  text-decoration: none;
+}
+
+.legal-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(9, 8, 6, 0.88), rgba(9, 8, 6, 1)),
+    url("./assets/bazi-consultant-study.png") center / cover fixed;
+}
+
+.legal-header,
+.legal-page {
+  width: min(900px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.legal-header {
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+}
+
+.legal-page {
+  padding: 32px 0 82px;
+}
+
+.legal-page h1 {
+  max-width: none;
+  margin-bottom: 8px;
+  font-size: clamp(38px, 6vw, 58px);
+}
+
+.legal-date {
+  margin-bottom: 32px;
+  color: var(--muted-soft);
+  font-weight: 800;
+}
+
+.legal-page section {
+  border-top: 1px solid var(--line);
+  padding: 24px 0;
+}
+
+.legal-page h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.legal-page p {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: #d6c8a8;
+}
+
 @media (max-width: 980px) {
   .hero__content,
   .upgrade-section {
@@ -611,6 +701,15 @@ input:focus {
 
   .hero-actions {
     display: grid;
+  }
+
+  .site-footer {
+    display: grid;
+    width: min(100% - 28px, 1180px);
+  }
+
+  .site-footer nav {
+    justify-content: flex-start;
   }
 
   .signal-strip div {
