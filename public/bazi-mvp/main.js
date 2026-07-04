@@ -1,7 +1,7 @@
 const form = document.querySelector("#intakeForm");
 const message = document.querySelector("#formMessage");
 const submitButton = document.querySelector("#submitButton");
-const config = window.BAZI_MVP_CONFIG || {};
+const config = window.BAZI_REPORT_CONFIG || {};
 
 function setMessage(text, isError = false) {
   message.textContent = text;
@@ -56,7 +56,7 @@ form.addEventListener("submit", async event => {
         body: JSON.stringify(payload)
       });
       form.reset();
-      setMessage("已送出申請。我們收到資料後，會排盤並製作免費語音摘要，再寄送到你的 Email。");
+      setMessage("已送出申請。我們收到資料後，會排盤並製作八字語音摘要，再寄送到你的 Email。");
       return;
     }
 
@@ -71,7 +71,7 @@ form.addEventListener("submit", async event => {
       return;
     }
     form.reset();
-    setMessage(`已收到申請，案件代號：${result.lead.caseId}。我們會開始製作免費摘要。`);
+    setMessage(`已收到申請，案件代號：${result.lead.caseId}。我們會開始製作八字語音摘要。`);
   } catch (error) {
     setMessage(`送出失敗：${error.message}`, true);
   } finally {
