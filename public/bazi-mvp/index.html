@@ -3,124 +3,235 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>免費八字語音摘要 MVP</title>
+    <title>八字命理語音報告｜免費八字語音摘要</title>
+    <meta
+      name="description"
+      content="輸入出生資料與想問的問題，取得一份免費八字語音摘要。以正統八字排盤為基礎，結合命理書籍資料庫製作個人化語音報告。"
+    />
+    <meta property="og:title" content="八字命理語音報告｜免費八字語音摘要" />
+    <meta property="og:description" content="先聽一份免費摘要，確認方向，再決定是否升級完整命盤報告。" />
+    <meta property="og:image" content="./assets/bazi-consultant-study.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="shell intake-shell">
-      <section class="intro-band">
-        <div>
-          <p class="eyebrow">免費測試版</p>
-          <h1>八字語音摘要</h1>
-          <p class="lead">
-            輸入出生資料，我們會先製作一份簡短文字摘要與語音連結。完整版可再延伸工作、財運、感情、健康與追加追問。
-          </p>
-        </div>
-        <div class="process-strip" aria-label="流程">
-          <span>填資料</span>
-          <span>排盤</span>
-          <span>製作語音</span>
-          <span>寄回 Email</span>
+    <main>
+      <section class="hero">
+        <div class="hero__image" aria-hidden="true"></div>
+        <div class="hero__shade" aria-hidden="true"></div>
+
+        <header class="site-header" aria-label="網站導覽">
+          <a class="brand" href="./" aria-label="八字命理語音報告首頁">
+            <span class="brand__mark"><i class="fa-solid fa-compass"></i></span>
+            <span>
+              <strong>八字命理</strong>
+              <small>專業命盤語音報告</small>
+            </span>
+          </a>
+          <nav class="nav-links" aria-label="主要連結">
+            <a href="#free-report">免費摘要</a>
+            <a href="#process">製作流程</a>
+            <a href="#upgrade">完整版</a>
+          </nav>
+        </header>
+
+        <div class="hero__content">
+          <section class="hero-copy" aria-labelledby="hero-title">
+            <p class="eyebrow">免費八字語音摘要測試版</p>
+            <h1 id="hero-title">聽見你的命盤結構，掌握人生關鍵時機</h1>
+            <p class="lead">
+              以正統八字排盤為基礎，結合命理書籍資料庫，為你製作一份白話、可收聽的個人命盤摘要。先聽免費版，確認方向，再決定是否升級完整報告。
+            </p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#free-report">立即領取免費摘要</a>
+              <a class="secondary-link" href="#upgrade">查看完整版內容</a>
+            </div>
+            <dl class="signal-strip" aria-label="服務重點">
+              <div>
+                <dt>3-5 分鐘</dt>
+                <dd>免費語音摘要</dd>
+              </div>
+              <div>
+                <dt>15-25 分鐘</dt>
+                <dd>可升級完整版</dd>
+              </div>
+              <div>
+                <dt>0-3 題</dt>
+                <dd>自選問題</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section id="free-report" class="intake-card" aria-labelledby="form-title">
+            <div class="card-heading">
+              <p class="card-kicker">免費領取</p>
+              <h2 id="form-title">申請八字語音摘要</h2>
+              <p>填寫出生資料與 Email，我們會製作簡短摘要並寄送收聽連結。</p>
+            </div>
+
+            <form id="intakeForm" class="intake-form">
+              <div class="field-grid field-grid--two">
+                <label>
+                  <span>姓名或暱稱</span>
+                  <input name="displayName" autocomplete="name" placeholder="例如 Jay / Chen / 小名" required />
+                </label>
+                <label>
+                  <span>收件 Email</span>
+                  <input name="email" type="email" autocomplete="email" placeholder="用來接收語音連結" required />
+                </label>
+              </div>
+
+              <fieldset class="gender-field">
+                <legend>性別</legend>
+                <label>
+                  <input name="gender" type="radio" value="男" required />
+                  <span>男</span>
+                </label>
+                <label>
+                  <input name="gender" type="radio" value="女" />
+                  <span>女</span>
+                </label>
+                <label>
+                  <input name="gender" type="radio" value="未提供" />
+                  <span>未提供</span>
+                </label>
+              </fieldset>
+
+              <div class="field-grid field-grid--two">
+                <label>
+                  <span>陽曆生日</span>
+                  <input name="birthDate" type="date" required />
+                </label>
+                <label>
+                  <span>出生時間</span>
+                  <input name="birthTime" type="time" required />
+                </label>
+              </div>
+
+              <label>
+                <span>出生地 / 時區</span>
+                <input name="birthPlace" placeholder="例如 台灣台南；不確定可先空白" />
+              </label>
+
+              <details class="question-panel">
+                <summary>我有想特別問的問題</summary>
+                <label>
+                  <span>問題 1</span>
+                  <input name="question1" placeholder="例如：明年工作與財運的重點？" />
+                </label>
+                <label>
+                  <span>問題 2</span>
+                  <input name="question2" placeholder="例如：感情或家庭要注意什麼？" />
+                </label>
+                <label>
+                  <span>問題 3</span>
+                  <input name="question3" placeholder="例如：適合轉職、合作或創業嗎？" />
+                </label>
+              </details>
+
+              <div class="consent-list">
+                <label class="checkline">
+                  <input name="consent" type="checkbox" required />
+                  <span>我同意接收免費八字摘要與本次服務通知。</span>
+                </label>
+                <label class="checkline">
+                  <input name="marketingConsent" type="checkbox" />
+                  <span>我願意收到完整版或追加追問的升級資訊。</span>
+                </label>
+              </div>
+
+              <button id="submitButton" class="submit-button" type="submit">
+                <span>送出申請</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <p id="formMessage" class="form-message" role="status"></p>
+            </form>
+          </section>
         </div>
       </section>
 
-      <section class="form-layout">
-        <form id="intakeForm" class="panel form-panel">
-          <div class="section-heading">
-            <h2>申請免費摘要</h2>
-            <p>目前是內部 MVP 測試，請先填模擬資料。</p>
-          </div>
+      <section id="process" class="section process-section" aria-labelledby="process-title">
+        <div class="section-heading">
+          <p class="eyebrow">專業流程</p>
+          <h2 id="process-title">從排盤到語音交付，每一步都保留人工確認</h2>
+        </div>
+        <div class="process-grid">
+          <article>
+            <i class="fa-regular fa-clipboard"></i>
+            <h3>填寫資料</h3>
+            <p>提供出生年月日、時間、性別與 Email。若有想問的問題，也可先寫下來。</p>
+          </article>
+          <article>
+            <i class="fa-solid fa-table-cells-large"></i>
+            <h3>命盤排盤</h3>
+            <p>依八字四柱、大運與流年整理命盤資料，避免直接套用空泛的心理描述。</p>
+          </article>
+          <article>
+            <i class="fa-solid fa-microphone-lines"></i>
+            <h3>生成語音</h3>
+            <p>用固定命理書籍資料庫生成白話語音摘要，讓你可以用聽的理解命盤。</p>
+          </article>
+          <article>
+            <i class="fa-regular fa-envelope"></i>
+            <h3>Email 寄送</h3>
+            <p>完成後會寄送 Google Drive 收聽連結。知道連結的人可開啟，不能編輯。</p>
+          </article>
+        </div>
+      </section>
 
-          <div class="grid two">
-            <label>
-              <span>姓名或暱稱</span>
-              <input name="displayName" autocomplete="name" placeholder="例如 Jay / Chen / 小名" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input name="email" type="email" autocomplete="email" placeholder="用來接收摘要連結" required />
-            </label>
-          </div>
-
-          <div class="grid three">
-            <label>
-              <span>性別</span>
-              <select name="gender" required>
-                <option value="">請選擇</option>
-                <option>男</option>
-                <option>女</option>
-                <option>未提供</option>
-              </select>
-            </label>
-            <label>
-              <span>陽曆生日</span>
-              <input name="birthDate" type="date" required />
-            </label>
-            <label>
-              <span>出生時間</span>
-              <input name="birthTime" type="time" required />
-            </label>
-          </div>
-
-          <label>
-            <span>出生地 / 時區</span>
-            <input name="birthPlace" placeholder="例如 台灣台南；若不確定可先空白" />
-          </label>
-
-          <div class="question-block">
-            <div class="section-heading compact">
-              <h2>想問的問題</h2>
-              <p>最多三題；空白也可以，我們會用預設問題。</p>
-            </div>
-            <label>
-              <span>問題 1</span>
-              <input name="question1" placeholder="例如：未來一年工作與財運如何？" />
-            </label>
-            <label>
-              <span>問題 2</span>
-              <input name="question2" placeholder="例如：感情或家庭關係要注意什麼？" />
-            </label>
-            <label>
-              <span>問題 3</span>
-              <input name="question3" placeholder="例如：適合轉職、創業或合作嗎？" />
-            </label>
-          </div>
-
-          <div class="consent-box">
-            <label class="checkline">
-              <input name="consent" type="checkbox" required />
-              <span>我同意接收免費八字摘要與本次服務通知。</span>
-            </label>
-            <label class="checkline">
-              <input name="marketingConsent" type="checkbox" />
-              <span>我願意收到完整版或追加追問的升級資訊。</span>
-            </label>
-          </div>
-
-          <button class="primary-action" type="submit">送出申請</button>
-          <p id="formMessage" class="message" role="status"></p>
-        </form>
-
-        <aside class="panel side-panel">
-          <h2>免費版包含</h2>
-          <ul class="clean-list">
-            <li>簡短文字摘要</li>
-            <li>約 3-5 分鐘語音連結</li>
-            <li>一個目前最重要提醒</li>
-            <li>完整版升級方向</li>
-          </ul>
-          <div class="divider"></div>
-          <h2>完整版會延伸</h2>
-          <ul class="clean-list muted">
-            <li>工作與職涯</li>
-            <li>財運與資產策略</li>
-            <li>感情與家庭</li>
-            <li>未來五年與追加追問</li>
-          </ul>
-          <p class="fineprint">
-            命理內容作為自我理解與生活參考，不作為醫療、法律、投資或絕對命運判斷。
+      <section id="upgrade" class="section upgrade-section" aria-labelledby="upgrade-title">
+        <div class="upgrade-copy">
+          <p class="eyebrow">服務階梯</p>
+          <h2 id="upgrade-title">免費摘要只是第一步，完整版會把命盤講完整</h2>
+          <p>
+            免費版聚焦一個當下最重要的提醒。若你聽完覺得方向有對上，正式完整版會延伸到過去驗證、核心性格、工作財運、感情家庭、健康調候、未來五年與晚年安排。
           </p>
-        </aside>
+        </div>
+        <div class="package-grid">
+          <article>
+            <span>免費版</span>
+            <h3>八字語音摘要</h3>
+            <ul>
+              <li>約 3-5 分鐘語音</li>
+              <li>一段簡短文字摘要</li>
+              <li>目前最重要提醒</li>
+            </ul>
+          </article>
+          <article class="featured-package">
+            <span>正式版</span>
+            <h3>完整命盤報告</h3>
+            <ul>
+              <li>約 15-25 分鐘語音</li>
+              <li>過去驗證與現況分析</li>
+              <li>未來五年工作、財運、感情、健康</li>
+            </ul>
+          </article>
+          <article>
+            <span>追加版</span>
+            <h3>指定問題追問</h3>
+            <ul>
+              <li>未來十年細部運勢</li>
+              <li>財運策略與合作風險</li>
+              <li>感情、家庭或職涯決策</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section disclaimer-section" aria-label="服務提醒">
+        <p>
+          命理分析適合作為自我理解、生活節奏與決策參考，不作為醫療診斷、投資指令、法律意見或絕對命運判斷。若涉及健康、財務或法律重大決策，請諮詢相應專業人士。
+        </p>
       </section>
     </main>
 
