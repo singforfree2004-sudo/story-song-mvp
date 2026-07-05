@@ -10,7 +10,33 @@
     />
     <meta property="og:title" content="八字命理語音報告｜個人命盤語音摘要" />
     <meta property="og:description" content="先收到一份個人語音摘要，了解命盤方向，再決定是否升級完整命盤報告。" />
-    <meta property="og:image" content="./assets/bazi-consultant-study.png" />
+    <meta property="og:image" content="https://bazi-audio-report.netlify.app/assets/og-cover.png" />
+    <meta property="og:url" content="https://bazi-audio-report.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://bazi-audio-report.netlify.app/" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <script defer data-domain="bazi-audio-report.netlify.app" src="https://plausible.io/js/script.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "八字命理語音報告",
+        "description": "以正統八字排盤與命理書籍資料庫製作白話個人命盤語音摘要與完整報告。",
+        "provider": {
+          "@type": "Organization",
+          "name": "澄流數位 Clearflow Digital",
+          "email": "clearflowdigital.tw@gmail.com"
+        },
+        "areaServed": "TW",
+        "serviceType": "BaZi audio report",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "TWD",
+          "lowPrice": "0",
+          "highPrice": "499"
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -42,6 +68,7 @@
             <a href="#free-report">語音摘要</a>
             <a href="#process">製作流程</a>
             <a href="#upgrade">完整版</a>
+            <a href="#faq">常見問題</a>
           </nav>
         </header>
 
@@ -56,10 +83,14 @@
               <a class="primary-link" href="#free-report">立即領取語音摘要</a>
               <a class="secondary-link" href="#upgrade">查看完整版內容</a>
             </div>
+            <div class="sample-player">
+              <p class="sample-label"><i class="fa-solid fa-play"></i> 先聽 60 秒真實範例（測試命盤，已去識別化）</p>
+              <audio id="sampleAudio" controls preload="none" src="./assets/sample.mp3"></audio>
+            </div>
             <dl class="signal-strip" aria-label="服務重點">
               <div>
-                <dt>3-5 分鐘</dt>
-                <dd>個人語音摘要</dd>
+                <dt>2-3 分鐘</dt>
+                <dd>免費 demo 摘要</dd>
               </div>
               <div>
                 <dt>15-25 分鐘</dt>
@@ -77,6 +108,7 @@
               <p class="card-kicker">線上申請</p>
               <h2 id="form-title">申請八字語音摘要</h2>
               <p>填寫出生資料與 Email，我們會製作簡短摘要並寄送收聽連結。</p>
+              <p class="delivery-note">送出後 24 小時內，語音摘要會寄到你的 Email。</p>
             </div>
 
             <form id="intakeForm" class="intake-form">
@@ -117,14 +149,18 @@
                   <input name="birthTime" type="time" required />
                 </label>
               </div>
+              <label class="checkline checkline--subtle">
+                <input name="unknownBirthTime" type="checkbox" />
+                <span>我不確定出生時辰 <small>不確定時辰也能做摘要，我們會以日柱為主分析，準確度說明會附在報告中。</small></span>
+              </label>
 
               <label>
-                <span>出生地 / 時區</span>
-                <input name="birthPlace" placeholder="例如 台灣台南；不確定可先空白" />
+                <span>出生地（選填）</span>
+                <input name="birthPlace" placeholder="例：台南市。不填則以台灣時區計算" />
               </label>
 
               <details class="question-panel">
-                <summary>我有想特別問的問題</summary>
+                <summary>＋ 我有想特別問的問題（選填，最多 3 題）</summary>
                 <label>
                   <span>問題 1</span>
                   <input name="question1" placeholder="例如：明年工作與財運的重點？" />
@@ -147,6 +183,10 @@
                 <label class="checkline">
                   <input name="marketingConsent" type="checkbox" />
                   <span>我願意收到完整版或追加追問的升級資訊。</span>
+                </label>
+                <label class="checkline">
+                  <input id="wantsPaid" name="wantsPaid" type="checkbox" />
+                  <span>我想直接購買完整版（NT$199），請寄付款方式給我</span>
                 </label>
               </div>
 
@@ -184,7 +224,7 @@
           <article>
             <i class="fa-regular fa-envelope"></i>
             <h3>Email 寄送</h3>
-            <p>完成後會寄送 Google Drive 收聽連結。知道連結的人可開啟，不能編輯。</p>
+            <p>完成後會在 24 小時內寄送 Google Drive 收聽連結。知道連結的人可開啟，不能編輯。</p>
           </article>
         </div>
       </section>
@@ -194,37 +234,74 @@
           <p class="eyebrow">服務階梯</p>
           <h2 id="upgrade-title">語音摘要只是第一步，完整版會把命盤講完整</h2>
           <p>
-            入門摘要聚焦一個當下最重要的提醒。若你聽完覺得方向有對上，正式完整版會延伸到過去驗證、核心性格、工作財運、感情家庭、健康調候、未來五年與晚年安排。
+            入門摘要會先確認你的命盤資料，再快速說明性格、工作財運、2026 年重點與感情伏筆。若你聽完覺得方向有對上，正式完整版會延伸到過去驗證、核心性格、工作財運、感情家庭、健康調候、未來五年與晚年安排。
           </p>
         </div>
         <div class="package-grid">
           <article>
             <span>入門版</span>
             <h3>八字語音摘要</h3>
+            <p class="package-price package-price--free">免費</p>
+            <p class="package-note">限時開放申請</p>
             <ul>
-              <li>約 3-5 分鐘語音</li>
-              <li>一段簡短文字摘要</li>
-              <li>目前最重要提醒</li>
+              <li>約 2-3 分鐘語音</li>
+              <li>命盤基本資料確認</li>
+              <li>性格、工作財運、2026 重點與感情伏筆</li>
             </ul>
           </article>
           <article class="featured-package">
+            <p class="package-badge">最多人選擇</p>
             <span>正式版</span>
             <h3>完整命盤報告</h3>
+            <p class="package-price">NT$199</p>
+            <p class="package-note">一次付費，音檔永久保存</p>
             <ul>
               <li>約 15-25 分鐘語音</li>
               <li>過去驗證與現況分析</li>
               <li>未來五年工作、財運、感情、健康</li>
             </ul>
+            <button id="buyFullReport" class="package-button" type="button">我要購買完整版</button>
           </article>
           <article>
             <span>追加版</span>
             <h3>指定問題追問</h3>
+            <p class="package-price">NT$99／題</p>
+            <p class="package-note">限已購買完整版客戶加購</p>
             <ul>
               <li>未來十年細部運勢</li>
               <li>財運策略與合作風險</li>
               <li>感情、家庭或職涯決策</li>
             </ul>
           </article>
+        </div>
+      </section>
+
+      <section id="faq" class="section faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="eyebrow">常見問題</p>
+          <h2 id="faq-title">申請前，你可能會想先確認的事</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>這個報告準嗎？是 AI 算的還是人算的？</summary>
+            <p>排盤依正統子平八字四柱、大運、流年計算，分析根據命理典籍資料庫（《滴天髓》《窮通寶鑑》《三命通會》《子平真詮》等）生成，並經人工流程確認後才寄出。我們不做空泛的心理測驗式描述；報告中若屬推估，會明確說「這是命理上的推估，不代表一定發生」。</p>
+          </details>
+          <details>
+            <summary>我的生日和個資會被怎麼使用？</summary>
+            <p>你的出生資料只用於製作這份報告。我們不會公開你的資料、不會加入任何共用資料庫，音檔連結不會被搜尋引擎收錄。你可以隨時來信要求刪除全部資料。詳見隱私權政策。</p>
+          </details>
+          <details>
+            <summary>多久會收到？</summary>
+            <p>免費語音摘要在送出申請後 24 小時內寄到你的 Email。完整版報告於付款確認後 24 小時內寄出。</p>
+          </details>
+          <details>
+            <summary>我不知道自己的出生時辰怎麼辦？</summary>
+            <p>可以。勾選「我不確定出生時辰」即可送出，我們會以年、月、日三柱為主分析，並在報告中說明準確度範圍。若之後查到時辰（可查出生證明或戶政出生登記），可來信補充，追問版會重新以完整四柱分析。</p>
+          </details>
+          <details>
+            <summary>完整版跟免費摘要差在哪？</summary>
+            <p>免費摘要約 2-3 分鐘，會先確認案件代號、生日、四柱八字與日主，再快速說明性格、工作財運、2026 重點，並留下感情伏筆。完整版約 15-25 分鐘，包含過去流年驗證、核心性格、工作職涯、財運模式、感情婚姻、健康調候、未來五年逐年分析與晚年安排，共 11 個章節。</p>
+          </details>
         </div>
       </section>
 
